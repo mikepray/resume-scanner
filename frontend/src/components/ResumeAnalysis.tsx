@@ -9,6 +9,11 @@ import {
   ListItem,
   Badge,
   Icon,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from '@chakra-ui/react';
 import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { AnalysisResult } from '../types';
@@ -92,6 +97,31 @@ const ResumeAnalysis: React.FC<ResumeAnalysisProps> = ({ analysis }) => {
             ))}
           </Box>
         </Box>
+
+        <Accordion allowToggle>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left" fontSize="xl" fontWeight="bold">
+                  Extracted Text
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <Box 
+                p={4} 
+                bg="gray.50" 
+                borderRadius="md" 
+                whiteSpace="pre-wrap"
+                fontFamily="monospace"
+                fontSize="sm"
+              >
+                {analysis.extracted_text}
+              </Box>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
       </VStack>
     </Box>
   );

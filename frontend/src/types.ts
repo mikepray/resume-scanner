@@ -4,4 +4,5 @@ export interface AnalysisResult {
   improvements: string[];
   recommendations: string[];
   missing_keywords: string[];
+  extracted_text: string;
 } 
