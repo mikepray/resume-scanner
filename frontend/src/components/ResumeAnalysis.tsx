@@ -7,18 +7,11 @@ import {
   Progress,
   List,
   ListItem,
-  ListIcon,
   Badge,
+  Icon,
 } from '@chakra-ui/react';
 import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
-
-interface AnalysisResult {
-  score: number;
-  strengths: string[];
-  improvements: string[];
-  recommendations: string[];
-  missing_keywords: string[];
-}
+import { AnalysisResult } from '../types';
 
 interface ResumeAnalysisProps {
   analysis: AnalysisResult;
@@ -52,7 +45,7 @@ const ResumeAnalysis: React.FC<ResumeAnalysisProps> = ({ analysis }) => {
           <List spacing={2}>
             {analysis.strengths.map((strength, index) => (
               <ListItem key={index} display="flex" alignItems="center">
-                <ListIcon as={CheckCircleIcon} color="green.500" />
+                <Icon as={CheckCircleIcon} color="green.500" mr={2} />
                 <Text>{strength}</Text>
               </ListItem>
             ))}
@@ -64,7 +57,7 @@ const ResumeAnalysis: React.FC<ResumeAnalysisProps> = ({ analysis }) => {
           <List spacing={2}>
             {analysis.improvements.map((improvement, index) => (
               <ListItem key={index} display="flex" alignItems="center">
-                <ListIcon as={WarningIcon} color="orange.500" />
+                <Icon as={WarningIcon} color="orange.500" mr={2} />
                 <Text>{improvement}</Text>
               </ListItem>
             ))}

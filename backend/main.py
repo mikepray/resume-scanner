@@ -21,7 +21,7 @@ app.add_middleware(
 textract = boto3.client('textract')
 
 # Initialize Anthropic client
-claude = anthropic.Client()
+claude = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 @app.post("/api/analyze-resume")
 async def analyze_resume(file: UploadFile = File(...)) -> Dict[str, Any]:

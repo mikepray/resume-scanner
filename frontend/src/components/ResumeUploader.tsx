@@ -9,9 +9,10 @@ import {
   Center,
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { AnalysisResult } from '../types';
 
 interface ResumeUploaderProps {
-  setAnalysis: (analysis: any) => void;
+  setAnalysis: (analysis: AnalysisResult) => void;
   setIsLoading: (loading: boolean) => void;
 }
 

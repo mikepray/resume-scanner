@@ -4,3 +4,10 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+.env/

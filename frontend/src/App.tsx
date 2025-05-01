@@ -1,16 +1,9 @@
 import React from 'react';
-import { ChakraProvider, Box, Container, Heading, VStack } from '@chakra-ui/react';
+import { ChakraProvider, Box, Container, Heading, VStack, Spinner, Center } from '@chakra-ui/react';
 import ResumeUploader from './components/ResumeUploader';
 import ResumeAnalysis from './components/ResumeAnalysis';
 import { useState } from 'react';
-
-interface AnalysisResult {
-  score: number;
-  strengths: string[];
-  improvements: string[];
-  recommendations: string[];
-  missing_keywords: string[];
-}
+import { AnalysisResult } from './types';
 
 function App() {
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
@@ -25,7 +18,11 @@ function App() {
               Resume ATS Scanner
             </Heading>
             <ResumeUploader setAnalysis={setAnalysis} setIsLoading={setIsLoading} />
-            {analysis && <ResumeAnalysis analysis={analysis} />}
+            {isLoading ? (
+              <Center p={8}>
+                <Spinner size="xl" color="blue.500" />
+              </Center>
+            ) : analysis && <ResumeAnalysis analysis={analysis} />}
           </VStack>
         </Container>
       </Box>
